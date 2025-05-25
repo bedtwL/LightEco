@@ -1,5 +1,7 @@
 package me.bedtwL.eco;
 
+import me.bedtwL.eco.database.IDataUtils;
+import me.bedtwL.eco.database.LocalConfigDataUtils;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -18,9 +20,12 @@ import java.util.List;
 
 public final class LightEco extends JavaPlugin implements CommandExecutor, TabExecutor {
     public static Economy economy = new VaultEco();
+    public static IDataUtils dataUtils;
     @Override
     public void onEnable() {
-        // Plugin startup logic
+        // TODO: add switch between database and local config
+        dataUtils = new LocalConfigDataUtils();
+
         if (Bukkit.getPluginManager().isPluginEnabled("Vault")) {
 
             getServer().getServicesManager().register(Economy.class, economy, this, ServicePriority.Normal);
