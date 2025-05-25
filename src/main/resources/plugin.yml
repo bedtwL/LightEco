@@ -2,3 +2,4 @@ name: LightEco
 version: '${project.version}'
 main: me.bedtwL.eco.LightEco
 api-version: '1.13'
+softdepend: ["Vault"]
